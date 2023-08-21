@@ -1,4 +1,4 @@
-import { capitalize, allCaps, capitalizeWords, capitalizeHeadline } from '../src';
+import { capitalize, allCaps, capitalizeWords, capitalizeHeadline, removeExtraSpaces } from '../src';
 
 test('capitalize', () => {
   expect(capitalize('hello')).toBe('Hello');
@@ -18,4 +18,9 @@ test('capitalizeWords', () => {
 test('capitalizeHeadline', () => {
   expect(capitalizeHeadline('the most foo in bar')).toBe('The Most Foo in Bar');
   expect(capitalizeHeadline('in the rear with the gear')).toBe('In the Rear With the Gear');
+});
+
+test('removeExtraSpaces', () => {
+  expect(removeExtraSpaces('  hello     world!  ')).toBe('hello world!');
+  expect(removeExtraSpaces('\thello\f\v\rworld!  \n')).toBe('hello world!');
 });
