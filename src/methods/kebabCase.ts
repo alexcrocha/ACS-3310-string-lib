@@ -1,6 +1,5 @@
-import { removeExtraSpaces } from "./removeExtraSpaces"
+import { justWords } from "./justWords";
 
 export const kebabCase = (str: string) => {
-  const string = str.replace(/[^a-zA-Z ]/g, " ").toLowerCase();
-  return removeExtraSpaces(string).replace(/\s/g, '-');
+  return justWords(str).replace(/\s/g, '-');
 }
