@@ -7,3 +7,4 @@ export { justWords } from './methods/justWords';
 export { kebabCase } from './methods/kebabCase';
 export { snakeCase } from './methods/snakeCase';
 export { camelCase } from './methods/camelCase';
+export { shift } from './methods/shift';

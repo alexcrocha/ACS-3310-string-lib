@@ -8,6 +8,7 @@ import {
   justWords,
   snakeCase,
   camelCase,
+  shift,
 } from '../src';
 
 test('capitalize', () => {
@@ -63,4 +64,10 @@ test('camelCase', () => {
   expect(camelCase('hello_world! again')).toBe('helloWorldAgain');
   expect(camelCase('hello.world')).toBe('helloWorld');
   expect(camelCase('hello.world.email.me')).toBe('helloWorldEmailMe');
+});
+
+test('shift', () => {
+  expect(shift('Hello World')).toBe('ello WorldH');
+  expect(shift('Hello World', 2)).toBe('llo WorldHe');
+  expect(shift('Hello World', 5)).toBe(' WorldHello');
 });
