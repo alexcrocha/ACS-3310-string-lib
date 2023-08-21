@@ -1,4 +1,13 @@
-import { capitalize, allCaps, capitalizeWords, capitalizeHeadline, removeExtraSpaces, kebabCase, justWords } from '../src';
+import {
+  capitalize,
+  allCaps,
+  capitalizeWords,
+  capitalizeHeadline,
+  removeExtraSpaces,
+  kebabCase,
+  justWords,
+  snakeCase
+} from '../src';
 
 test('capitalize', () => {
   expect(capitalize('hello')).toBe('Hello');
@@ -25,6 +34,13 @@ test('removeExtraSpaces', () => {
   expect(removeExtraSpaces('\thello\f\v\rworld!  \n')).toBe('hello world!');
 });
 
+test('justWords', () => {
+  expect(justWords('hello')).toBe('hello');
+  expect(justWords('hello-world!')).toBe('hello world');
+  expect(justWords(' hello_world! again')).toBe('hello world again');
+  expect(justWords('@#*(&^%$hello.world')).toBe('hello world');
+});
+
 test('kebabCase', () => {
   expect(kebabCase('hello')).toBe('hello');
   expect(kebabCase('hello world!')).toBe('hello-world');
@@ -33,9 +49,9 @@ test('kebabCase', () => {
   expect(kebabCase('hello.world@email.me')).toBe('hello-world-email-me');
 });
 
-test('justWords', () => {
-  expect(justWords('hello')).toBe('hello');
-  expect(justWords('hello-world!')).toBe('hello world');
-  expect(justWords(' hello_world! again')).toBe('hello world again');
-  expect(justWords('@#*(&^%$hello.world')).toBe('hello world');
+test('snakeCase', () => {
+  expect(snakeCase('hello')).toBe('hello');
+  expect(snakeCase(' hello-world!')).toBe('hello_world');
+  expect(snakeCase('hello_world! again')).toBe('hello_world_again');
+  expect(snakeCase('hello.world@email.me')).toBe('hello_world_email_me');
 });
