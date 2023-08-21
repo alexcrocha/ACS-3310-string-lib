@@ -1,4 +1,4 @@
-import { capitalize, allCaps, capitalizeWords, capitalizeHeadline, removeExtraSpaces, kebabCase } from '../src';
+import { capitalize, allCaps, capitalizeWords, capitalizeHeadline, removeExtraSpaces, kebabCase, justWords } from '../src';
 
 test('capitalize', () => {
   expect(capitalize('hello')).toBe('Hello');
@@ -31,4 +31,11 @@ test('kebabCase', () => {
   expect(kebabCase(' hello-world!')).toBe('hello-world');
   expect(kebabCase('hello_world! again')).toBe('hello-world-again');
   expect(kebabCase('hello.world@email.me')).toBe('hello-world-email-me');
+});
+
+test('justWords', () => {
+  expect(justWords('hello')).toBe('hello');
+  expect(justWords('hello-world!')).toBe('hello world');
+  expect(justWords(' hello_world! again')).toBe('hello world again');
+  expect(justWords('@#*(&^%$hello.world')).toBe('hello world');
 });
