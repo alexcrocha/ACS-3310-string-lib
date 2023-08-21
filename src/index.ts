@@ -6,3 +6,4 @@ export { removeExtraSpaces } from './methods/removeExtraSpaces';
 export { justWords } from './methods/justWords';
 export { kebabCase } from './methods/kebabCase';
 export { snakeCase } from './methods/snakeCase';
+export { camelCase } from './methods/camelCase';

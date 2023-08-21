@@ -6,7 +6,8 @@ import {
   removeExtraSpaces,
   kebabCase,
   justWords,
-  snakeCase
+  snakeCase,
+  camelCase,
 } from '../src';
 
 test('capitalize', () => {
@@ -54,4 +55,12 @@ test('snakeCase', () => {
   expect(snakeCase(' hello-world!')).toBe('hello_world');
   expect(snakeCase('hello_world! again')).toBe('hello_world_again');
   expect(snakeCase('hello.world@email.me')).toBe('hello_world_email_me');
+});
+
+test('camelCase', () => {
+  expect(camelCase('hello')).toBe('hello');
+  expect(camelCase(' hello-world!')).toBe('helloWorld');
+  expect(camelCase('hello_world! again')).toBe('helloWorldAgain');
+  expect(camelCase('hello.world')).toBe('helloWorld');
+  expect(camelCase('hello.world.email.me')).toBe('helloWorldEmailMe');
 });
