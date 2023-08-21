@@ -1,4 +1,4 @@
-import { capitalize, allCaps, capitalizeWords, capitalizeHeadline, removeExtraSpaces } from '../src';
+import { capitalize, allCaps, capitalizeWords, capitalizeHeadline, removeExtraSpaces, kebabCase } from '../src';
 
 test('capitalize', () => {
   expect(capitalize('hello')).toBe('Hello');
@@ -23,4 +23,12 @@ test('capitalizeHeadline', () => {
 test('removeExtraSpaces', () => {
   expect(removeExtraSpaces('  hello     world!  ')).toBe('hello world!');
   expect(removeExtraSpaces('\thello\f\v\rworld!  \n')).toBe('hello world!');
+});
+
+test('kebabCase', () => {
+  expect(kebabCase('hello')).toBe('hello');
+  expect(kebabCase('hello world!')).toBe('hello-world');
+  expect(kebabCase(' hello-world!')).toBe('hello-world');
+  expect(kebabCase('hello_world! again')).toBe('hello-world-again');
+  expect(kebabCase('hello.world@email.me')).toBe('hello-world-email-me');
 });
