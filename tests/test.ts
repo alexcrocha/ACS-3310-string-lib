@@ -1,4 +1,4 @@
-import { capitalize, allCaps, capitalizeWords } from '../src'
+import { capitalize, allCaps, capitalizeWords, capitalizeHeadline } from '../src';
 
 test('capitalize', () => {
   expect(capitalize('hello')).toBe('Hello');
@@ -13,4 +13,9 @@ test('allCaps', () => {
 test('capitalizeWords', () => {
   expect(capitalizeWords('hello')).toBe('Hello');
   expect(capitalizeWords('hello world!')).toBe('Hello World!');
+});
+
+test('capitalizeHeadline', () => {
+  expect(capitalizeHeadline('the most foo in bar')).toBe('The Most Foo in Bar');
+  expect(capitalizeHeadline('in the rear with the gear')).toBe('In the Rear With the Gear');
 });
