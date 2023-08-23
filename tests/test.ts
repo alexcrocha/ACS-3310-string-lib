@@ -9,6 +9,7 @@ import {
   snakeCase,
   camelCase,
   shift,
+  makeHashTag,
 } from '../src';
 
 test('capitalize', () => {
@@ -70,4 +71,20 @@ test('shift', () => {
   expect(shift('Hello World')).toBe('ello WorldH');
   expect(shift('Hello World', 2)).toBe('llo WorldHe');
   expect(shift('Hello World', 5)).toBe(' WorldHello');
+});
+
+test('makeHashTag', () => {
+  expect(makeHashTag('Hello    beautiful\nworld')).toEqual([
+    '#beautiful',
+    '#hello',
+    '#world',
+  ]);
+  expect(makeHashTag('Oh my beautiful world, how I love thee')).toEqual([
+    '#beautiful',
+    '#world',
+    '#love',
+  ]);
+  expect(makeHashTag('Hello hello hello')).toEqual([
+    '#hello',
+  ]);
 });
