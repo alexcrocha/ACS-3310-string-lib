@@ -10,6 +10,7 @@ import {
   camelCase,
   shift,
   makeHashTag,
+  isEmpty,
 } from '../src';
 
 test('capitalize', () => {
@@ -87,4 +88,11 @@ test('makeHashTag', () => {
   expect(makeHashTag('Hello hello hello')).toEqual([
     '#hello',
   ]);
+});
+
+test('isEmpty', () => {
+  expect(isEmpty('')).toBe(true);
+  expect(isEmpty('\n  \t')).toBe(true);
+  expect(isEmpty('hello')).toBe(false);
+  expect(isEmpty(' hello \vworld ')).toBe(false);
 });
