@@ -1,5 +1,5 @@
-import { justWords } from "./justWords"
+import { onlyWords } from "./onlyWords"
 
 export const snakeCase = (str: string) => {
-  return justWords(str).replace(/\s/g, '_');
+  return onlyWords(str).replace(/\s/g, '_');
 }

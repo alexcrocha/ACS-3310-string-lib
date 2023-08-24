@@ -1,5 +1,5 @@
-import { justWords } from "./justWords";
+import { onlyWords } from "./onlyWords";
 
 export const isEmpty = (str: string) => {
-  return justWords(str) === '';
+  return onlyWords(str) === '';
 }

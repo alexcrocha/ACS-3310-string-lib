@@ -1,5 +1,5 @@
-import { justWords } from "./justWords";
+import { onlyWords } from "./onlyWords";
 
 export const kebabCase = (str: string) => {
-  return justWords(str).replace(/\s/g, '-');
+  return onlyWords(str).replace(/\s/g, '-');
 }

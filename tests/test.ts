@@ -5,9 +5,9 @@ import {
   capitalizeHeadline,
   capitalizeWords,
   isEmpty,
-  justWords,
   kebabCase,
   makeHashTag,
+  onlyWords,
   removeExtraSpaces,
   shift,
   snakeCase,
@@ -49,13 +49,6 @@ test('isEmpty', () => {
   expect(isEmpty(' hello \vworld ')).toBe(false);
 });
 
-test('justWords', () => {
-  expect(justWords('hello')).toBe('hello');
-  expect(justWords('hello-world!')).toBe('hello world');
-  expect(justWords(' hello_world! again')).toBe('hello world again');
-  expect(justWords('@#*(&^%$hello.world')).toBe('hello world');
-});
-
 test('kebabCase', () => {
   expect(kebabCase('hello')).toBe('hello');
   expect(kebabCase('hello world!')).toBe('hello-world');
@@ -78,6 +71,13 @@ test('makeHashTag', () => {
   expect(makeHashTag('Hello hello hello')).toEqual([
     '#hello',
   ]);
+});
+
+test('onlyWords', () => {
+  expect(onlyWords('hello')).toBe('hello');
+  expect(onlyWords('hello-world!')).toBe('hello world');
+  expect(onlyWords(' hello_world! again')).toBe('hello world again');
+  expect(onlyWords('@#*(&^%$hello.world')).toBe('hello world');
 });
 
 test('removeExtraSpaces', () => {

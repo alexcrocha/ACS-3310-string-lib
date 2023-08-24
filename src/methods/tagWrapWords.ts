@@ -1,5 +1,5 @@
-import { justWords } from "./justWords";
+import { onlyWords } from "./onlyWords";
 
 export const tagWrapWords = (str: string, tag: string) => {
-  return justWords(str).split(' ').map(word => `<${tag}>${word}</${tag}>`).join(' ');
+  return onlyWords(str).split(' ').map(word => `<${tag}>${word}</${tag}>`).join(' ');
 }
