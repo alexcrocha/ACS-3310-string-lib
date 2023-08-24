@@ -1,32 +1,35 @@
 import {
-  capitalize,
   allCaps,
-  capitalizeWords,
-  capitalizeHeadline,
-  removeExtraSpaces,
-  kebabCase,
-  justWords,
-  snakeCase,
   camelCase,
-  shift,
-  makeHashTag,
+  capitalize,
+  capitalizeHeadline,
+  capitalizeWords,
   isEmpty,
+  justWords,
+  kebabCase,
+  makeHashTag,
+  removeExtraSpaces,
+  shift,
+  snakeCase,
   tagWrapWords,
 } from '../src';
-
-test('capitalize', () => {
-  expect(capitalize('hello')).toBe('Hello');
-  expect(capitalize('hello world!')).toBe('Hello world!');
-});
 
 test('allCaps', () => {
   expect(allCaps('hello')).toBe('HELLO');
   expect(allCaps('hello world!')).toBe('HELLO WORLD!');
 });
 
-test('capitalizeWords', () => {
-  expect(capitalizeWords('hello')).toBe('Hello');
-  expect(capitalizeWords('hello world!')).toBe('Hello World!');
+test('camelCase', () => {
+  expect(camelCase('hello')).toBe('hello');
+  expect(camelCase(' hello-world!')).toBe('helloWorld');
+  expect(camelCase('hello_world! again')).toBe('helloWorldAgain');
+  expect(camelCase('hello.world')).toBe('helloWorld');
+  expect(camelCase('hello.world.email.me')).toBe('helloWorldEmailMe');
+});
+
+test('capitalize', () => {
+  expect(capitalize('hello')).toBe('Hello');
+  expect(capitalize('hello world!')).toBe('Hello world!');
 });
 
 test('capitalizeHeadline', () => {
@@ -34,9 +37,16 @@ test('capitalizeHeadline', () => {
   expect(capitalizeHeadline('in the rear with the gear')).toBe('In the Rear With the Gear');
 });
 
-test('removeExtraSpaces', () => {
-  expect(removeExtraSpaces('  hello     world!  ')).toBe('hello world!');
-  expect(removeExtraSpaces('\thello\f\v\rworld!  \n')).toBe('hello world!');
+test('capitalizeWords', () => {
+  expect(capitalizeWords('hello')).toBe('Hello');
+  expect(capitalizeWords('hello world!')).toBe('Hello World!');
+});
+
+test('isEmpty', () => {
+  expect(isEmpty('')).toBe(true);
+  expect(isEmpty('\n  \t')).toBe(true);
+  expect(isEmpty('hello')).toBe(false);
+  expect(isEmpty(' hello \vworld ')).toBe(false);
 });
 
 test('justWords', () => {
@@ -52,27 +62,6 @@ test('kebabCase', () => {
   expect(kebabCase(' hello-world!')).toBe('hello-world');
   expect(kebabCase('hello_world! again')).toBe('hello-world-again');
   expect(kebabCase('hello.world@email.me')).toBe('hello-world-email-me');
-});
-
-test('snakeCase', () => {
-  expect(snakeCase('hello')).toBe('hello');
-  expect(snakeCase(' hello-world!')).toBe('hello_world');
-  expect(snakeCase('hello_world! again')).toBe('hello_world_again');
-  expect(snakeCase('hello.world@email.me')).toBe('hello_world_email_me');
-});
-
-test('camelCase', () => {
-  expect(camelCase('hello')).toBe('hello');
-  expect(camelCase(' hello-world!')).toBe('helloWorld');
-  expect(camelCase('hello_world! again')).toBe('helloWorldAgain');
-  expect(camelCase('hello.world')).toBe('helloWorld');
-  expect(camelCase('hello.world.email.me')).toBe('helloWorldEmailMe');
-});
-
-test('shift', () => {
-  expect(shift('Hello World')).toBe('ello WorldH');
-  expect(shift('Hello World', 2)).toBe('llo WorldHe');
-  expect(shift('Hello World', 5)).toBe(' WorldHello');
 });
 
 test('makeHashTag', () => {
@@ -91,11 +80,22 @@ test('makeHashTag', () => {
   ]);
 });
 
-test('isEmpty', () => {
-  expect(isEmpty('')).toBe(true);
-  expect(isEmpty('\n  \t')).toBe(true);
-  expect(isEmpty('hello')).toBe(false);
-  expect(isEmpty(' hello \vworld ')).toBe(false);
+test('removeExtraSpaces', () => {
+  expect(removeExtraSpaces('  hello     world!  ')).toBe('hello world!');
+  expect(removeExtraSpaces('\thello\f\v\rworld!  \n')).toBe('hello world!');
+});
+
+test('shift', () => {
+  expect(shift('Hello World')).toBe('ello WorldH');
+  expect(shift('Hello World', 2)).toBe('llo WorldHe');
+  expect(shift('Hello World', 5)).toBe(' WorldHello');
+});
+
+test('snakeCase', () => {
+  expect(snakeCase('hello')).toBe('hello');
+  expect(snakeCase(' hello-world!')).toBe('hello_world');
+  expect(snakeCase('hello_world! again')).toBe('hello_world_again');
+  expect(snakeCase('hello.world@email.me')).toBe('hello_world_email_me');
 });
 
 test('tagWrapWords', () => {
