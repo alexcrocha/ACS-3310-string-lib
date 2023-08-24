@@ -11,6 +11,7 @@ import {
   shift,
   makeHashTag,
   isEmpty,
+  tagWrapWords,
 } from '../src';
 
 test('capitalize', () => {
@@ -95,4 +96,13 @@ test('isEmpty', () => {
   expect(isEmpty('\n  \t')).toBe(true);
   expect(isEmpty('hello')).toBe(false);
   expect(isEmpty(' hello \vworld ')).toBe(false);
+});
+
+test('tagWrapWords', () => {
+  expect(tagWrapWords('Hello world', 'span'))
+    .toBe('<span>Hello</span> <span>world</span>');
+  expect(tagWrapWords('Hello hello hello', 'div'))
+    .toBe('<div>Hello</div> <div>hello</div> <div>hello</div>');
+  expect(tagWrapWords('Oh my beautiful world, how I love thee', 'p'))
+    .toBe('<p>Oh</p> <p>my</p> <p>beautiful</p> <p>world</p> <p>how</p> <p>I</p> <p>love</p> <p>thee</p>');
 });

@@ -10,3 +10,4 @@ export { camelCase } from './methods/camelCase';
 export { shift } from './methods/shift';
 export { makeHashTag } from './methods/makeHashTag';
 export { isEmpty } from './methods/isEmpty';
+export { tagWrapWords } from './methods/tagWrapWords';
